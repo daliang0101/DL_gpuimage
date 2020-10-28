@@ -54,11 +54,20 @@
 * 需要unlock的位置：当前节点渲染结束时，需要释放从上个节点传递过来的frameBuffer的引用；通知下一级节点开始之后，把当前节点渲染使用的frameBuffer释放；
 
 # 结构层次
+## 基础模块
+![image](https://github.com/daliang0101/DL_gpuimage/blob/main/images/base_cls.png)
+
 ## Sources模块
 ![image](https://github.com/daliang0101/DL_gpuimage/blob/main/images/sources_jc.png)  
 
-   
+## Filters模块
+![image](https://github.com/daliang0101/DL_gpuimage/blob/main/images/filter_jc.png)  
 
+## Filters与基础模块之间的关系
+![image](https://github.com/daliang0101/DL_gpuimage/blob/main/images/filter_baseCls.png)  
+   
+## GPUImageView结构
+![image](https://github.com/daliang0101/DL_gpuimage/blob/main/images/glview.png)  
 
 
 
