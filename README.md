@@ -55,7 +55,7 @@
 
 # 结构层次
 ## Sources模块
-![image](https://github.com/daliang0101/OpenGL/blob/main/images/GLsummary.png)  
+![image](https://github.com/daliang0101/DL_gpuimage/blob/main/images/sources_jc.png)  
 
    
 
