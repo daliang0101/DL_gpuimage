@@ -53,7 +53,9 @@
 
 * 需要unlock的位置：当前节点渲染结束时，需要释放从上个节点传递过来的frameBuffer的引用；通知下一级节点开始之后，把当前节点渲染使用的frameBuffer释放；
 
-# 代码结构
+# 结构层次
+## Sources模块
+![image](https://github.com/daliang0101/OpenGL/blob/main/images/GLsummary.png)  
 
    
 
