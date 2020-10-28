@@ -1,5 +1,6 @@
 对GPUImage的学习记录  
-
+# 概览
+![image](https://github.com/daliang0101/DL_gpuimage/blob/main/images/summary.png)  
 # 简介 
 * iOS平台图像处理库  
 
