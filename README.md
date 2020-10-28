@@ -9,7 +9,7 @@
 
 * 内置上百种滤镜，且使用其GPUImageFilter接口可以很方便添加自定义滤镜  
   
-* 支持视频/图像后期滤镜处理、编码生成新的视频文件：GPUImageMovie接口  
+* 支持视频/图像后期滤镜处理、编码，生成新文件，使用GPUImageMovie接口  
 
 # 设计思想  
 * 节点：对一个处理阶段的抽象  
@@ -30,7 +30,32 @@
    
    output父类：继承该类的子类，都可以把下一级节点对象添加到它的目标列表中，处理完成后遍历目标列表，把结果逐个通知给目标对象
    
+# 主结构类、协议简介
+## GLProgram：对 OpenGL ES 顶点、片段着色器程序的抽象封装  
+*   创建、编译shader对象；  
 
+*   创建shaderProgram对象，为shaderProgram对象附加具体的shader对象；  
+   
+*   链接、激活、销毁shaderProgram对象；  
+   
+*   绑定、获取shaderProgram的Attribute变量位置；
+   
+*   获取Uniform变量位置；
+   
+## GPUImageFramebuffer：对 OpenGL ES 帧缓冲区相关数据、行为的抽象封装
+* 创建、绑定、销毁FBO；
+  
+* 创建、绑定、销毁纹理对象，指定纹理过滤模式，为FBO绑定纹理对象；  
+
+* 引用计数，为0时，会被cache回收；提供lock、unlock接口增加、减少计数值； 
+
+* 需要lock的位置：从Cache中获取到一个FrameBuffer时，把frameBuffer传递给下一级节点时，usingNextFrameForImageCapture == YES时；
+
+* 需要unlock的位置：当前节点渲染结束时，需要释放从上个节点传递过来的frameBuffer的引用；通知下一级节点开始之后，把当前节点渲染使用的frameBuffer释放；
+
+# 代码结构
+
+   
 
 
 
