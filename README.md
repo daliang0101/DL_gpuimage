@@ -54,6 +54,19 @@
 
 * 需要unlock的位置：当前节点渲染结束时，需要释放从上个节点传递过来的frameBuffer的引用；通知下一级节点开始之后，把当前节点渲染使用的frameBuffer释放；
 
+## GPUImageFramebufferCache：缓存GPUImageFramebuffer、GLProgram对象
+* 生成FBO需要占用一定的内存或者显存，滤镜链上可能需要很多FBO；
+
+* 该类对GPUImageFramebuffer、GLProgram提供复用机制；
+
+* 以buffer size、texture parametres生成一个字符串作为key，把GPUImageFramebuffer、GLProgram对象存入NSMutableDictionary；
+
+## GPUImageContext：对OpenGL ES  上下问对象的封装
+* 管理GL ES上下文  
+
+* 管理GPUImageFramebufferCache
+
+
 # 结构层次
 ## 基础模块
 ![image](https://github.com/daliang0101/DL_gpuimage/blob/main/images/base_cls.png)
@@ -72,7 +85,12 @@
 
 
 
+# 滤镜链内幕
+* 继承GPUImageOutput的对象有一个outputFrameBuffer成员，其渲染结果就存储在这里；
 
+* 渲染结束之后，变量目标对象列表，把目标对象的outputFrameBuffer传递给目标对象的inputFrameBuffer；
+
+* 目标对象把inputFrameBuffer中的纹理绑定到自身的outputFrameBuffer中，也相当于把上一级处理结果图像作为当前待处理的图像；
 
 
 
